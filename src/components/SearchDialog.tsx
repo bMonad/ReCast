@@ -10,9 +10,6 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Kbd, KbdGroup } from '@/components/ui/kbd';
-import { openWeatherApi } from '@/api';
-import { WEATHER_API } from '@/config';
-import { type Geocoding } from '@/types';
 import { MapPin, MapPinned, MapPinSearch, Search } from 'lucide-react';
 import {
   InputGroup,
@@ -26,13 +23,14 @@ import {
   ItemDescription,
   ItemGroup,
   ItemTitle,
-} from './ui/item';
-
-/**
- * Types
- */
+} from '@/components/ui/item';
+import { useWeather } from '@/hooks/useWeather';
+import { openWeatherApi } from '@/api';
+import { APP, WEATHER_API } from '@/config';
+import { type Geocoding } from '@/types';
 
 export const SearchDialog = () => {
+  const { setWeather } = useWeather();
   const [search, setSearch] = useState<string>('');
   const [results, setResults] = useState<Geocoding[]>();
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
@@ -138,6 +136,11 @@ export const SearchDialog = () => {
                   key={name + lat + lon}
                   size='sm'
                   className='relative p-2 hover:bg-card'
+                  onClick={() => {
+                    setWeather({ lat, lon });
+                    sessionStorage.setItem(APP.STORE_KEY.LAT, lat.toString());
+                    sessionStorage.setItem(APP.STORE_KEY.LON, lon.toString());
+                  }}
                 >
                   <ItemContent>
                     <ItemTitle>{name}</ItemTitle>
@@ -151,7 +154,6 @@ export const SearchDialog = () => {
                     variant='ghost'
                     size='icon'
                     className='after:absolute after:inset-0'
-                    onClick={() => {}}
                   >
                     <MapPinned className='text-icon' />
                   </Button>
