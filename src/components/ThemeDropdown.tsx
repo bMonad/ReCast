@@ -12,7 +12,7 @@ export const ThemeDropdown = () => {
   const { setTheme } = useTheme();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger>
         <Button
           variant='secondary'
           size='icon'

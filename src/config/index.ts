@@ -5,8 +5,8 @@
 
 export const WEATHER_API = {
   DEFAULTS: {
-    LAT: 40.2338211,
-    LON: -84.4096729,
+    LAT: 28.6448,
+    LON: 77.2167,
     UNIT: 'metric',
     LANG: 'en',
     SEARCH_RESULT_LIMIT: 5,
@@ -15,7 +15,7 @@ export const WEATHER_API = {
 
 export const MAPBOX = {
   DEFAULTS: {
-    CENTER: [WEATHER_API.DEFAULTS.LON, WEATHER_API.DEFAULTS.LAT] as LngLatLike,
+    // CENTER: [WEATHER_API.DEFAULTS.LON, WEATHER_API.DEFAULTS.LAT] as LngLatLike,
     ZOOM: 12.5,
   },
 } as const;
