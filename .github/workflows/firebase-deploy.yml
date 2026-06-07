@@ -19,8 +19,14 @@ jobs:
           node-version: "22"
           cache: "npm"
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (clean)
+        run: |
+          rm -rf node_modules package-lock.json || true
+          npm install
+
+      - name: Rebuild native modules (safety)
+        run: |
+          npm rebuild || true
 
       - name: Build the app
         run: npm run build
