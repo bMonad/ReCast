@@ -1,4 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
+import { openWeatherApi } from '@/api';
+import { APP, WEATHER_API } from '@/config';
+import { type Geocoding } from '@/types';
+import { useWeather } from '@/hooks/useWeather';
 import {
   Dialog,
   DialogClose,
@@ -10,7 +14,6 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Kbd, KbdGroup } from '@/components/ui/kbd';
-import { MapPin, MapPinned, MapPinSearch, Search } from 'lucide-react';
 import {
   InputGroup,
   InputGroupAddon,
@@ -24,10 +27,7 @@ import {
   ItemGroup,
   ItemTitle,
 } from '@/components/ui/item';
-import { useWeather } from '@/hooks/useWeather';
-import { openWeatherApi } from '@/api';
-import { APP, WEATHER_API } from '@/config';
-import { type Geocoding } from '@/types';
+import { MapPinned, MapPinSearch, Search } from 'lucide-react';
 
 export const SearchDialog = () => {
   const { setWeather } = useWeather();
@@ -128,10 +128,7 @@ export const SearchDialog = () => {
           )}
           {results?.map(({ name, lat, lon, state, country }) => (
             <ItemActions>
-              <DialogClose
-                asChild
-                className='w-full!'
-              >
+              <DialogClose className='w-full!'>
                 <Item
                   key={name + lat + lon}
                   size='sm'

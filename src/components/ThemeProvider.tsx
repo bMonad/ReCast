@@ -1,9 +1,9 @@
+import { createContext, useContext, useLayoutEffect, useState } from 'react';
 import {
   type Theme,
   type ThemeProviderProps,
   type ThemeProviderState,
 } from '@/types/ThemeTypes';
-import { createContext, useContext, useLayoutEffect, useState } from 'react';
 
 const initialState: ThemeProviderState = {
   theme: 'system',

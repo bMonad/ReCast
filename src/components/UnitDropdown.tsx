@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { APP, WEATHER_API } from '@/config';
+import { useWeather } from '@/hooks/useWeather';
 import type { WeatherUnitType } from '@/components/WeatherProvider';
 import {
   DropdownMenu,
@@ -10,8 +12,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { useWeather } from '@/hooks/useWeather';
-import { APP, WEATHER_API } from '@/config';
 
 export const UnitDropdown = () => {
   const { setWeather } = useWeather();
@@ -24,11 +24,11 @@ export const UnitDropdown = () => {
     setWeather({ unit });
 
     localStorage.setItem(APP.STORE_KEY.UNIT, unit);
-  }, [unit]);
+  }, [unit, setWeather]);
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger>
         <Button
           variant='secondary'
           size='icon'
