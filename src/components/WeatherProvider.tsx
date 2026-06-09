@@ -46,11 +46,11 @@ export const WeatherProviderContext =
 export const WeatherProvider = ({ children }: React.PropsWithChildren) => {
   const defaultLat =
     Number(sessionStorage.getItem(APP.STORE_KEY.LAT)) ||
-    localStorage.getItem(APP.STORE_KEY.LAT) ||
+    Number(localStorage.getItem(APP.STORE_KEY.LAT)) ||
     WEATHER_API.DEFAULTS.LAT;
   const defaultLon =
     Number(sessionStorage.getItem(APP.STORE_KEY.LON)) ||
-    localStorage.getItem(APP.STORE_KEY.LON) ||
+    Number(localStorage.getItem(APP.STORE_KEY.LON)) ||
     WEATHER_API.DEFAULTS.LON;
   const defaultUnit =
     (localStorage.getItem(APP.STORE_KEY.UNIT) as WeatherUnitType) ||
