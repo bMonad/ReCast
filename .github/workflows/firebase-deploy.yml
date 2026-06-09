@@ -30,6 +30,8 @@ jobs:
 
       - name: Build the app
         run: npm run build
+        env:
+          VITE_OPENWEATHER_API_KEY: ${{ secrets.VITE_OPENWEATHER_API_KEY }}
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v12.9.0
