@@ -1,7 +1,7 @@
 /**
  * Types
  */
-// import type { LngLatLike } from 'mapbox-gl';
+import type { LngLatLike } from 'mapbox-gl';
 
 export const WEATHER_API = {
   DEFAULTS: {
@@ -15,7 +15,7 @@ export const WEATHER_API = {
 
 export const MAPBOX = {
   DEFAULTS: {
-    // CENTER: [WEATHER_API.DEFAULTS.LON, WEATHER_API.DEFAULTS.LAT] as LngLatLike,
+    CENTER: [WEATHER_API.DEFAULTS.LON, WEATHER_API.DEFAULTS.LAT] as LngLatLike,
     ZOOM: 12.5,
   },
 } as const;

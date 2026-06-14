@@ -151,6 +151,11 @@ export const SearchDialog = () => {
                     variant='ghost'
                     size='icon'
                     className='after:absolute after:inset-0'
+                    onClick={() => {
+                      setWeather({ lat, lon });
+                      sessionStorage.setItem(APP.STORE_KEY.LAT, lat.toString());
+                      sessionStorage.setItem(APP.STORE_KEY.LON, lon.toString());
+                    }}
                   >
                     <MapPinned className='text-icon' />
                   </Button>
